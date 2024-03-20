@@ -5,6 +5,33 @@
   <title>HPlus Sport</title>
   <link rel="stylesheet" href="css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script>
+    $(document).ready(function() {
+      // changing the color of the products as per their data-type
+      $(".product-name").each(function() {
+        var dataType = $(this).data("type");
+        var color = "";
+        
+        // mapping data-type to color
+        switch (dataType) {
+          case "vitamin":
+            color = "green";
+            break;
+          case "mineralwater":
+            color = "blue";
+            break;
+          case "proteinbar":
+            color = "purple";
+            break;
+        }
+        
+        // applying the color to the product name
+        $(this).css("background-color", color);
+      });
+    });
+  </script>
 </head>
 <body>
 
