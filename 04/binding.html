@@ -19,6 +19,11 @@
                 $(this).removeClass("highlighted");
             });
             
+            // Bind the keypress event to the text field
+            $("#textEntry").on("keypress", function(event) {
+                $("#keyPress").text(String.fromCharCode(event.which));
+            });
+
         });
     </script>
     <style>
