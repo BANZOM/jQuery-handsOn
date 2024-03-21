@@ -29,6 +29,29 @@
         
         // applying the color to the product name
         $(this).css("background-color", color);
+
+
+        // Challenge 2: adding a checkbox to display only vitamins, mineral water, or protein bars
+        document.querySelector("input[name='vitamin']").addEventListener("change", function(evt){
+          updatePreview("vitamin", evt.target.checked)
+        });
+
+        document.querySelector("input[name='mineralwater']").addEventListener("change", function(evt){
+          updatePreview("mineralwater", evt.target.checked)
+        });
+
+        document.querySelector("input[name='proteinbar']").addEventListener("change", function(evt){
+          updatePreview("proteinbar", evt.target.checked)
+        });
+
+        function updatePreview(type, checked) {
+          $(".product-item").each(function() {
+            var dataType = $(this).find(".product-name").data("type");
+            if (dataType === type) {
+              $(this).toggle(checked);
+            }
+          });
+        }
       });
     });
   </script>
@@ -73,6 +96,20 @@
     <h2 class="headline">Products</h2>
     <p>H+ Sport is <em>dedicated to creating</em> eco-friendly, high-quality, nutrient-rich, nutritional products that <em>enhance active lifestyles</em>. We <a href="#guarantee">guarantee</a> it. Take a look at some of our products.</p>
   </div><!-- container -->
+
+  <!-- checkbox form -->
+  <div class="checkbox">
+    <h3>Filter Products</h3>
+    <form>
+      <input type="checkbox" id="vitamin" name="vitamin" value="vitamin" checked>
+      <label for="vitamin">Vitamins</label>
+      <input type="checkbox" id="mineralwater" name="mineralwater" value="mineralwater" checked>
+      <label for="mineralwater">Mineral Water</label>
+      <input type="checkbox" id="proteinbar" name="proteinbar" value="proteinbar" checked>
+      <label for="proteinbar">Protein Bars</label>
+    </form>
+  </div>
+
   <ul class="product-list">
     <li class="product-item" data-prod_id="V-A1037">
         <img class="product-image" src="images/products/vitamin-a.jpg" alt="Vitamin A - Product Photo">
