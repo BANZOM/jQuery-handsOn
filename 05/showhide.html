@@ -8,12 +8,15 @@
     <script>
         $(function() {
             $("#show").click(function() {
-                $("#theDiv").show();
+                $("#theDiv").show("slow");
             });
             $("#hide").click(function() {
-                $("#theDiv").hide();
+                $("#theDiv").hide("fast");
             });
             $("#toggle").click(function() {
+                $("#theDiv").toggle(2000, function() {
+                    $("#theDiv").text("The animation is complete!");
+                });
             });
         });
     </script>
