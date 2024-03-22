@@ -18,6 +18,21 @@
       productId = decodeURIComponent(productId);
       // display the product name
       $('#productName').text(productName);
+
+      // Challenge 3 - Product Information from JSON
+      $.getJSON("product-data.json", function(data) {
+        // find the product with the matching id
+        var product_data = data.products;
+        
+        for (var i = 0; i < product_data.length; i++) {
+          if (product_data[i].prod_id == productId) {
+            $('#productStock').text(product_data[i].in_stock);
+            $('#productPrice').text(product_data[i].retail_price);
+            $('#productDesc').text(product_data[i].description);
+            break;
+          }
+        }    
+      });
     });
   </script>
 </head>
