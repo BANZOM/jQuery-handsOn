@@ -23,15 +23,15 @@
       $.getJSON("product-data.json", function(data) {
         // find the product with the matching id
         var product_data = data.products;
-        
-        for (var i = 0; i < product_data.length; i++) {
-          if (product_data[i].prod_id == productId) {
-            $('#productStock').text(product_data[i].in_stock);
-            $('#productPrice').text(product_data[i].retail_price);
-            $('#productDesc').text(product_data[i].description);
-            break;
+
+        product_data.forEach(function(product) {
+          if (product.prod_id == productId) {
+            $('#productStock').text(product.in_stock);
+            $('#productPrice').text(product.retail_price);
+            $('#productDesc').text(product.description);
+            return; // exit the loop once the product is found
           }
-        }    
+        });
       });
     });
   </script>
