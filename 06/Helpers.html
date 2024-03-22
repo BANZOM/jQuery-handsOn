@@ -18,10 +18,16 @@
         });
         
         function getData() {
-            $.get("testdata.txt", successFn)
-            .fail(errorFn)
-            .always(function(xhr, status) {
-                console.log("The request is complete!");
+            // $.get("testdata.txt", successFn)
+            // .fail(errorFn)
+            // .always(function(xhr, status) {
+            //     console.log("The request is complete!");
+            // });
+
+            $("#ajaxContent").load("testdata.html", function(response, status, xhr) {
+                if (status == "error") {
+                    alert("An error occurred: " + xhr.status + " - " + xhr.statusText);
+                }
             });
         }
 
