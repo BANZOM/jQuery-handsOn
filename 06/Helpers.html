@@ -11,13 +11,18 @@
     </style>
     <link rel="stylesheet" href="/style.css" />
     <script src="/jquery-3.7.1.js"></script>
-    
+
     <script>
         $("document").ready(function() {
             getData();
         });
         
         function getData() {
+            $.get("testdata.txt", successFn)
+            .fail(errorFn)
+            .always(function(xhr, status) {
+                console.log("The request is complete!");
+            });
         }
 
         function successFn(result) {
