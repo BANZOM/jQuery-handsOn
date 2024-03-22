@@ -14,13 +14,18 @@
     <script src="/jquery-3.7.1.js"></script>
     <script>
         $("document").ready(function() {
-            getXMLData();
-            //getJSONData();
+            // getXMLData();
+            getJSONData();
         });
       
         function getJSONData() {
             var flickrAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-            
+
+            $.getJSON(flickrAPI, {
+                tags: "mount rainier",
+                tagmode: "any",
+                format: "json"
+            }, successFn)            
         }
 
         function getXMLData() {
@@ -40,6 +45,14 @@
         }
 
         function successFn(result) {
+            // displaying the images
+            var html = "";
+            $.each(result.items, function(i, item) {
+                html += "<img src='" + item.media.m + "' />";
+                if (i == 4) return false;
+            });
+
+            $("#ajaxContent").html(html);
         }
 
         function errorFn(xhr, status, strErr) {
