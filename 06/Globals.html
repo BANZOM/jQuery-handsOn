@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Using AJAX Global Events</title>
+    <style>
+        #ajaxContent {
+            padding: 5pt;
+            border: 2px dashed lightgray;
+        }
+    </style>
+    <link rel="stylesheet" href="/style.css" />
+
+    <script src="/jquery-3.7.1.js"></script>
+    <script>
+        $("document").ready(function() {
+            $(document).ajaxStart(function() {
+                console.log("AJAX request started.");
+            });
+            $(document).ajaxStop(function() {
+                console.log("AJAX request stopped.");
+            });
+            $(document).ajaxSuccess(function() {
+                console.log("AJAX request successful.");
+            });
+            $(document).ajaxError(function() {
+                console.log("AJAX request error.");
+            });
+            $(document).ajaxComplete(function() {
+                console.log("AJAX request complete.");
+            });
+            $(document).ajaxSend(function() {
+                console.log("AJAX request sent.");
+            });
+
+            getData();
+        });
+      
+        function getData() {
+            $.get("testdata.txt", successFn);
+        }
+        
+        function successFn(result) {
+            console.log("Setting result");
+            $("#ajaxContent").append(result);
+        }
+        function errorFn(xhr, status, strErr) {
+            alert(strErr);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Using AJAX Global Events</h1>
+    <div id="content">
+        <p id="ajaxContent"></p>
+    </div>
+</body>
+
+</html>
