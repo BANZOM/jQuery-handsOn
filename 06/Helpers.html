@@ -24,7 +24,7 @@
             //     console.log("The request is complete!");
             // });
 
-            $("#ajaxContent").load("testdata.html", function(response, status, xhr) {
+            $("#ajaxContent").load("testdata.html #p2", function(response, status, xhr) {
                 if (status == "error") {
                     alert("An error occurred: " + xhr.status + " - " + xhr.statusText);
                 }
