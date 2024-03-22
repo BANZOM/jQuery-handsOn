@@ -53,6 +53,13 @@
           });
         }
       });
+
+      // Challenge 3: adding a click event to products to redirect to a product page
+      $(".product-item").click(function() {
+        var prodName = $(this).find(".product-name").text();
+        var prodId = $(this).data("prod_id");
+        window.location.href = "product.html?prodName=" + prodName + "&prodId=" + prodId;
+      });
     });
   </script>
 </head>
